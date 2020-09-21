@@ -124,18 +124,15 @@ section {
     padding: 15em 0;
     background: #222;
     /* @support not working so I added these to get same effect */
-    // background-image: url(../img/shoe-6.png);
-    /* background-size: 10%; */
+    //background-image: url(../img/shoe-6.png), radial-gradient(#444, #111);
+    // background-size: 10%;
     /*this makes the bgrd img in to multiple */
-    /* background-attachment: fixed;
-    background-repeat: no-repeat;
-    background-position: center center; */
     /* supports is a features query
     if the browser knows @supports it will render otherwise it will 
     render the things outside the @supports */
-    @supports (background-blend-mode: multiple) {
-        background: url(../img/shoe-3.png), radial-gradient(#444, #111);
-        background-blend-mode: multiple;
+    @supports (background-blend-mode: multiply) {
+        background: url(../img/shoe-6.png), radial-gradient(#444, #111);
+        background-blend-mode: multiply;
         background-attachment: fixed;
         background-repeat: no-repeat;
         background-position: center center;
@@ -143,7 +140,7 @@ section {
 }
 
 
-/* if not using sass, must add this */
+/* if not using sass, will use this for css*/
 
 
 /* @supports (property: value) {
@@ -192,4 +189,48 @@ section {
             font-size: 2.5rem;
         }
     }
+}
+
+// style the products
+.product {
+    background: radial-gradient( var(--clr-inner, limegreen), var(--clr-outer, purple));
+    //this is a kind of default background
+    padding: 3em;
+    border-radius: 1em;
+    margin-bottom: 5em;
+    text-align: center;
+    &__title {
+        font-size: 4rem;
+        line-height: 1.1;
+        color: #fff;
+        text-shadow: 0 0 .2em rgba(#000, .2);
+    }
+    &__image {
+        margin: -5em 0 0 0; // this makes our shoe stick out a little
+    }
+}
+
+//update the custom color properties. 
+//They can be placed anywhere in the code
+.hero {
+    --clr-accent: #faa700;
+}
+
+//def and update the custom background for the shoes. We currently using the default
+.shoe-red {
+    --clr-inner: #faa700;
+    --clr-outer: #e48d00;
+    --clr-accent: #a1173c;
+}
+
+.shoe-white {
+    --clr-inner: #fce4b3;
+    --clr-outer: #eac886;
+    --clr-accent: #2f4858;
+}
+
+.shoe-blue {
+    --clr-inner: #6dd5ed;
+    --clr-outer: #2193b0;
+    --clr-accent: #008951;
 }
