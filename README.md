@@ -29,7 +29,7 @@ To edit and view changes in SASS
 - Traversy Media featuring Kevin Powell. 
 - many thanks to Traversy Media for the good work you guys are doing to spread knowledge. 
 I am always appreciative how you come up with great and interesting videos for free.
-- [Youtube Link] : (https://youtu.be/X1dz0xRbSJc)
-- [Git repo] : (https://github.com/kevin-powell/shoes)
+- [Youtube Link](https://youtu.be/X1dz0xRbSJc)
+- [Git repo](https://github.com/kevin-powell/shoes)
 
  
