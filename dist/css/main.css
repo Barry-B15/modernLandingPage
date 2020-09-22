@@ -92,11 +92,10 @@ section {
   text-align: center;
   padding: 15em 0;
   background: #222;
-  /* @support not working so I added these to get same effect */
   /*this makes the bgrd img in to multiple */
   /* supports is a features query
     if the browser knows @supports it will render otherwise it will 
-    render the things outside the @supports */ }
+    render the codes written outside of the @supports */ }
   @supports (background-blend-mode: multiply) {
     .hero {
       background: url(../img/shoe-6.png), radial-gradient(#444, #111);
@@ -105,7 +104,7 @@ section {
       background-repeat: no-repeat;
       background-position: center center; } }
 
-/* if not using sass, will use this for css*/
+/* if not using sass, we will use this for css*/
 /* @supports (property: value) {
     .hero {}
 } */
@@ -148,12 +147,30 @@ section {
   margin-bottom: 5em;
   text-align: center; }
   .product__title {
-    font-size: 4rem;
-    line-height: 1.1;
+    font-size: clamp(3rem, calc(5vw + 1rem), 5.5rem);
+    text-transform: uppercase;
+    line-height: 1;
     color: #fff;
     text-shadow: 0 0 0.2em rgba(0, 0, 0, 0.2); }
   .product__image {
     margin: -5em 0 0 0; }
+  @media (min-width: 45em) {
+    .product {
+      text-align: left;
+      margin-bottom: 9em; }
+      .product__title {
+        margin: 0; }
+      .product__image {
+        float: right;
+        width: 65%;
+        shape-outside: url(../img/shoe-1.png);
+        shape-margin: 1em;
+        margin: 0 -5em 0 0; }
+      .product.shoe-left .product__image {
+        float: left;
+        shape-outside: url(../img/shoe-2.png);
+        margin: 0 0 0 -5em;
+        shape-margin: 2em; } }
 
 .hero {
   --clr-accent: #faa700; }

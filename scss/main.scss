@@ -123,13 +123,11 @@ section {
     text-align: center;
     padding: 15em 0;
     background: #222;
-    /* @support not working so I added these to get same effect */
-    //background-image: url(../img/shoe-6.png), radial-gradient(#444, #111);
     // background-size: 10%;
     /*this makes the bgrd img in to multiple */
     /* supports is a features query
     if the browser knows @supports it will render otherwise it will 
-    render the things outside the @supports */
+    render the codes written outside of the @supports */
     @supports (background-blend-mode: multiply) {
         background: url(../img/shoe-6.png), radial-gradient(#444, #111);
         background-blend-mode: multiply;
@@ -140,7 +138,7 @@ section {
 }
 
 
-/* if not using sass, will use this for css*/
+/* if not using sass, we will use this for css*/
 
 
 /* @supports (property: value) {
@@ -200,13 +198,45 @@ section {
     margin-bottom: 5em;
     text-align: center;
     &__title {
-        font-size: 4rem;
-        line-height: 1.1;
+        font-size: clamp(3rem, calc(5vw + 1rem), 5.5rem); //4rem;
+        text-transform: uppercase;
+        line-height: 1;
         color: #fff;
         text-shadow: 0 0 .2em rgba(#000, .2);
     }
     &__image {
         margin: -5em 0 0 0; // this makes our shoe stick out a little
+    }
+    // we need to target when the viewpoint changes, think of the break points and how it affects the views; around 750/16 or 45em
+    // em is the best thing to use for media query as many browsers handle things differently. Do this after doing the custom color updates 
+    //(.shoe.blue etc)
+    // "floats are made to wrap text around content
+    // add media query
+    @media (min-width: 45em) {
+        text-align: left;
+        margin-bottom: 9em;
+        &__title {
+            margin: 0;
+        }
+        &__image {
+            float: right;
+            width: 65%;
+            //outline: 2px dotted red; //
+            // if we do this we see a sq around images. We want to be able to put test within this square.
+            // We do this with "shape-outside"
+            shape-outside: url(../img/shoe-1.png); // shape outside allows text text to wrap inside the img outline(seen above)
+            shape-margin: 1em;
+            margin: 0 -5em 0 0;
+        }
+        // for the shoe facing right. (for larger project we can have style for img facing left or right separately e.g. shoe-left, shoe-right classes)
+        &.shoe-left {
+            .product__image {
+                float: left;
+                shape-outside: url(../img/shoe-2.png);
+                margin: 0 0 0 -5em; // opp the other margin, pull img to the left
+                shape-margin: 2em;
+            }
+        }
     }
 }
 
